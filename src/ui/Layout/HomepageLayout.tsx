@@ -5,6 +5,7 @@ import { fetchImages } from "../../entities/thunks/fetchImages"
 import Homepage from "./Homepage"
 import Grid from "../ImagesGrid/Grid"
 import ImagesFilters from "../ImagesGrid/ImagesFilters"
+import Virtual from "../ImagesGrid/virtual"
 
 const HomepageLayout = ( ) => {
   const dispatch = useDispatch<AppDispatch>()
@@ -15,7 +16,7 @@ const HomepageLayout = ( ) => {
 
     return (
         <Homepage filters={<ImagesFilters />}>
-            <Grid />
+            <Virtual />
         </Homepage>
     )
 }

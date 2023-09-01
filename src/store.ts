@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { imagesSliceReducer } from './entities/imagesSlice'
+import { filterSliceReducer } from './ui/filters/filterSlice'
 
 export const store = configureStore({
   reducer: {
     images: imagesSliceReducer,
+    filters: filterSliceReducer,
   },
 })
 

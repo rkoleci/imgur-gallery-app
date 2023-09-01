@@ -1,9 +1,12 @@
+import { FilterSort } from "../ui/types";
 import { APIResponse, parseAPIResponse, tryFetch } from "./utils";
 
 export namespace ImagesApiClient {
   
     export interface ImagesRequest {
-      page: number;
+      page?: number;
+      sort?: FilterSort;
+      viral?: boolean;
     }
     
     export interface ImagesResponse {

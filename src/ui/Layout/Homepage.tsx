@@ -7,8 +7,8 @@ const Homepage = ({ filters, children }: HomepageProps) => {
 
     return (
         <>
-        {filters}
-        {children}
+        filtresr {filters}
+       
         </>
     )
 }
