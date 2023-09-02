@@ -44,11 +44,7 @@ const InfiniteLoaderGrid = ({ items, onLoadMore, totalPages, renderItem, columns
   }, [lastElement]); 
 
   return (
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: `repeat(${columns}, 1fr)`,
-
-    }}>
+    <div className={`grid grid-cols-${columns}`} >
       {items?.map((id, i) => {
           return (
             <div key={`${id}`} ref={i === items.length - 1 && pageNum <= totalPages ? setLastElement : null}  >

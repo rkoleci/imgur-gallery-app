@@ -20,6 +20,7 @@ export default {
       grotesque: ['Darker Grotesque'],
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
+
 }
 
