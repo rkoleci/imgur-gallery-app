@@ -11,7 +11,7 @@ const Homepage = ({ filters, children }: HomepageProps) => {
                     {filters}
                 </div>
             </header>
-            <div className="w-screen h-screen flex items-center justify-center px-4">
+            <div className="w-screen h-screen px-4 py-6">
                 <div className="mx-auto max-w-[1280px]"> 
                     {children}
                 </div>
