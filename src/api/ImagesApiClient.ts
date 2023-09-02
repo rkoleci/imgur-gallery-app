@@ -1,4 +1,4 @@
-import { FilterSort } from "../ui/types";
+import { FilterSection, FilterSort, FilterWindow } from "../ui/types";
 import { APIResponse, parseAPIResponse, tryFetch } from "./utils";
 
 export namespace ImagesApiClient {
@@ -7,6 +7,9 @@ export namespace ImagesApiClient {
       page?: number;
       sort?: FilterSort;
       viral?: boolean;
+      search?: string | null;
+      window?: FilterWindow;
+      section?: FilterSection;
     }
     
     export interface ImagesResponse {

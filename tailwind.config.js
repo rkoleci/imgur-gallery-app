@@ -14,7 +14,9 @@ export default {
       'accent-medium-2': '#FDE6DD',
       'white': '#fff',
       'white-second': "#FAFAFA",
-      'black': '#000'
+      'black': '#000',
+      'brown': '#474a51',
+      'brown-light': '#b4b9c2'
     }, 
     fontFamily: {
       grotesque: ['Darker Grotesque'],

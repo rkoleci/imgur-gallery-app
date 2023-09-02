@@ -1,32 +1,41 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { FilterSort, FilterState } from '../types'
+import { FilterSection, FilterSort, FilterState, FilterWindow } from '../types'
 import { isNil } from 'lodash'
 import { ImagesApiClient } from '../../api/ImagesApiClient'
 import { AppDispatch, RootState } from '../../store'
 import { FilterSelectors } from './filterSelectors'
 import { fetchImages } from '../../entities/thunks/fetchImages'
  
-export const selectFiltersAndFetch = ({ sort, viral, page = 1 }: ImagesApiClient.ImagesRequest) => (dispatch: AppDispatch) => {
+export const selectFiltersAndFetch = ({ sort, viral, search, window, section, page = 1 }: ImagesApiClient.ImagesRequest) => (dispatch: AppDispatch) => {
     if (!isNil(sort)) {
       dispatch(setSort(sort))
     }
     if (!isNil(viral)) {
       dispatch(setViral(viral))
     } 
+    if (!isNil(search)) {
+      dispatch(setSearch(search))
+    }
+    if (!isNil(window)) {
+      dispatch(setWindow(window))
+    } 
+    if (!isNil(section)) {
+      dispatch(setSection(section))
+    }
   
-    //dispatch(fetchImagesWithFilters({ page }))
+    dispatch(fetchImagesWithFilters({ page }))
   }
   
   export const fetchImagesWithFilters = ({ page }: { page: number }) => (dispatch: AppDispatch, getState: () => RootState) => {
     const filters = FilterSelectors.selectFilters(getState());
-    console.log(111111, { filters })
-    //dispatch(fetchImages({ page, ...filters }));
+    dispatch(fetchImages({ page, ...filters }));
   }
 
 const initialState: FilterState = {
     sort: FilterSort.ASC,
     viral: false,
+    search: null,
 }
 
 const filterSlice = createSlice({
@@ -38,9 +47,18 @@ const filterSlice = createSlice({
     },
     setViral(state, action: PayloadAction<boolean>) {
         state.viral = action.payload
+    },
+    setSearch(state, action: PayloadAction<string | null>) {
+      state.search = action.payload
+    },
+    setWindow(state, action: PayloadAction<FilterWindow>) {
+        state.window = action.payload
+    },
+    setSection(state, action: PayloadAction<FilterSection>) {
+      state.section = action.payload
     }
   },
 })
 
-export const { setSort, setViral } = filterSlice.actions
+export const { setSort, setViral, setSearch, setWindow, setSection } = filterSlice.actions
 export const filterSliceReducer = filterSlice.reducer;

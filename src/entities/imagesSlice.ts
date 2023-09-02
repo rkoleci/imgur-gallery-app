@@ -10,12 +10,7 @@ export const imagesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => { 
     builder.addCase(fetchImages.fulfilled, (state, action) => {
-      imagesAdapter.setMany(state, [
-        ... data.data.map(i => ({
-          ...i,
-          id: `${i}-${Math.random()}`
-        }))
-      ])
+      imagesAdapter.setMany(state, data.data )
     }); 
   },
   

@@ -1,71 +1,99 @@
-import { useDispatch } from "react-redux"
-import { AppDispatch } from "../../store"
-import { selectFiltersAndFetch } from "../filters/filterSlice"
-import { FilterSort } from "../types"
+import { connect, useDispatch } from "react-redux"
+import { AppDispatch, RootState } from "../../store"
+import { selectFiltersAndFetch, setSearch } from "../filters/filterSlice"
+import { FilterSection, FilterSort, FilterState, FilterWindow, FilterWindowKey } from "../types"
+import Input from "../components/Input"
+import { FilterSelectors } from "../filters/filterSelectors"
 
-const ImagesFilters = () => {
-    console.log(111,' ImagesFilters ')
-    const dispatch = useDispatch<AppDispatch>()
-
-    const onSetViral = () => {
-        dispatch(selectFiltersAndFetch({
-            viral: true,
-        }))
-    }
-
-    const onSetViralFalse = () => {
-        dispatch(selectFiltersAndFetch({
-            viral: false,
-        }))
-    }
-
-    const setAsc = () => {
-        dispatch(selectFiltersAndFetch({
-            sort: FilterSort.DESC   ,
-        }))
-    }
-
-    return (
-        <div className="flex flex-col xl:flex-row justify-between gap-4">
-            <div className="flex-[0.3] flex justify-end xl:justify-start gap-4">
-                <label className="label cursor-pointer">
-                    <span className="label-text">Viral</span> 
-                    <input type="checkbox" checked={false} className="checkbox checkbox-primary" />
-                </label>
-                <label className="label cursor-pointer">
-                    <span className="label-text">Viral</span> 
-                    <input type="checkbox" checked={false} className="checkbox checkbox-primary" />
-                </label>
-            </div>
-            <div className="flex-1 flex justify-center xl:justify-end">
-                <input type="text" placeholder="Type here" className="input w-full border-1" />
-            </div>
-            <div className="flex-[0.3] flex justify-center xl:justify-end">
-   
-            <select className="select w-full max-w-xs">
-                <option disabled selected>Pick your favorite Simpson</option>
-                <option>Homer</option>
-                <option>Marge</option>
-                <option>Bart</option>
-                <option>Lisa</option>
-                <option>Maggie</option>
-            </select>
-            </div>
-        </div>
-    )
-
-    return (
-      <div>
-    
- 
-
-
-<button className="btn">
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
-  Button
-</button>
-      </div>
-    )
+interface ImagesFiltersProps {
+    sort: FilterSort;
+    viral: boolean;
+    search: string | null;
+    window: FilterWindow;
+    section: FilterState;
 }
 
-export default ImagesFilters
+const windows = Object.keys(FilterWindow) as Array<keyof typeof FilterWindow>;
+const sections = Object.keys(FilterSection) as Array<keyof typeof FilterSection>
+
+const ImagesFilters = ({ sort, viral, search, window, section }: ImagesFiltersProps) => {
+    const dispatch = useDispatch<AppDispatch>() 
+
+    const onViral = (event: Event) => {
+        const viral = (event.target as HTMLInputElement).value;
+        console.log(111, { viral})
+
+        dispatch(selectFiltersAndFetch({
+            viral: viral === 'on' ? true: false
+        }))
+    }
+
+    const onSort = (event: Event) => {
+        const sort = (event.target as HTMLInputElement).value;
+
+        dispatch(selectFiltersAndFetch({
+            sort: sort as FilterSort
+        }))
+    }
+
+    const onSearch = (search: string) => {
+        dispatch(selectFiltersAndFetch({
+            search
+        }))
+    }
+    
+    return (
+        <div className="flex flex-col xl:flex-row justify-between gap-4 xl:gap-8">
+            <div className="flex-[0.5] flex justify-end xl:justify-start gap-4">
+                <label className="label cursor-pointer flex gap-2">
+                    <span className="label-text">Viral</span> 
+                    <input type="checkbox" onChange={onViral}  className="checkbox checkbox-primary" />
+                </label> 
+                <select className="select w-full max-w-xs" onChange={onSort}>
+                    <option disabled selected>Window:</option> 
+                     {windows.map((window) => (
+                          <option>{window}</option>
+                     ))}
+                </select>
+                <select className="select w-full max-w-xs" onChange={onSort}>
+                    <option disabled selected>Section:</option> 
+                     {sections.map((section) => (
+                          <option>{section}</option>
+                     ))}
+                </select>
+            </div>
+            <div className="flex-1 flex justify-center xl:justify-end">
+                <Input
+                    placeholder="Search..."
+                    onChange={onSearch}
+                />
+            </div>
+            <div className="flex-[0.3] flex justify-center xl:justify-end">
+                <select className="select w-full" onChange={onSort}>
+                    <option disabled selected>Sort by Title:</option>
+                    <option>ASC Title</option>
+                    <option>DSC Title</option>
+                </select>
+            </div>
+        </div>
+    ) 
+}
+
+const mapStateToProps = (state: RootState) => {
+    const sort = FilterSelectors.selectFilterByType(state, 'sort')
+    const viral = FilterSelectors.selectFilterByType(state, 'viral')
+    const search = FilterSelectors.selectFilterByType(state, 'search')
+    const window = FilterSelectors.selectFilterByType(state, 'window')
+    const section = FilterSelectors.selectFilterByType(state, 'section')
+    console.log(111, 'f', sort, viral, search, window, section)
+
+    return {
+        sort,
+        viral,
+        search,
+        window,
+        section
+    }
+}
+
+export default connect(mapStateToProps)(ImagesFilters)
