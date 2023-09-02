@@ -28,3 +28,11 @@ export enum FilterSection {
     Top = 'Top',
     User = 'User'
 }
+
+export enum FilterTypes {
+    Sort= 'sort',
+    Viral= 'viral',
+    Search= 'search',
+    Window= 'window',
+    Section= 'section',
+}

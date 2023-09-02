@@ -1,5 +1,5 @@
-import { RootState } from "../store";
-import { imagesAdapter } from "./imagesAdapter";
+import { RootState } from "@/store";
+import { imagesAdapter } from "@/entities/imagesAdapter";
 
 export namespace ImagesSelectors {
   export const {

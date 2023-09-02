@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'  
-import { imagesAdapter } from './imagesAdapter';
-import { fetchImages } from './thunks/fetchImages';
+import { imagesAdapter } from '@/entities/imagesAdapter';
+import { fetchImages } from '@/entities/thunks/fetchImages';
 
 import data from '../data.json'
 

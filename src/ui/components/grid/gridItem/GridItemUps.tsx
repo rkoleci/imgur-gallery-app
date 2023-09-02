@@ -1,8 +1,9 @@
-import { EntityId } from "@reduxjs/toolkit";
-import { RootState } from "../../store";
-import { Image } from "../../entities/types";
-import { ImagesSelectors } from "../../entities/imageSelectors";
 import { connect } from "react-redux";
+import { EntityId } from "@reduxjs/toolkit"
+
+import { Image } from "@/entities/types";
+import { ImagesSelectors } from "@/entities/imageSelectors";
+import { RootState } from "@/store"
 
 interface GridIemUpsWOwnProps {
     id: EntityId;

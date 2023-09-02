@@ -1,12 +1,13 @@
-import { EntityId } from "@reduxjs/toolkit"
-import { RootState } from "../../store"
-import { Image } from "../../entities/types";
-import { ImagesSelectors } from "../../entities/imageSelectors";
-import { connect } from "react-redux";
 import { useState } from "react";
-import GridItemUps from "./GridItemUps";
-import GridItemCommentCount from './GridItemCommenCount'
-import GridItemViews from "./GridItemViews";
+import { connect } from "react-redux";
+import { EntityId } from "@reduxjs/toolkit"
+
+import { Image } from "@/entities/types";
+import { ImagesSelectors } from "@/entities/imageSelectors";
+import { RootState } from "@/store"
+import GridItemUps from "@/ui/components/grid/gridItem/GridItemUps";
+import GridItemCommentCount from '@/ui/components/grid/gridItem/GridItemCommenCount'
+import GridItemViews from "@/ui/components/grid/gridItem/GridItemViews";
 
 interface GridItemOwnProps {
     id: EntityId;

@@ -1,5 +1,5 @@
-import { FilterSection, FilterSort, FilterWindow } from "../ui/types";
-import { APIResponse, parseAPIResponse, tryFetch } from "./utils";
+import { FilterSection, FilterSort, FilterWindow } from "@/ui/filters/types";
+import { APIResponse, parseAPIResponse, tryFetch } from "@/api/utils";
 
 export namespace ImagesApiClient {
   

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ImagesApiClient  } from "../../api/ImagesApiClient";
-import { processThunkResults } from "./utils";
+import { ImagesApiClient  } from "@/api/ImagesApiClient";
+import { processThunkResults } from "@/entities/thunks/utils";
 
 export const fetchImages = createAsyncThunk<
 any,

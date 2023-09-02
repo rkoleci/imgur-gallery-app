@@ -1,12 +1,12 @@
-import { connect, useDispatch } from "react-redux";
-import { EntityId } from "@reduxjs/toolkit";
-import { ImagesSelectors } from "../../entities/imageSelectors";
-
-import { fetchImages } from "../../entities/thunks/fetchImages";
-import InfiniteLoaderGrid from "./InfiniteLoaderGrid";
-import { AppDispatch, RootState } from "../../store";
-import GridItem from "./Griditem";
 import { useMemo } from "react";
+import { EntityId } from "@reduxjs/toolkit";
+import { connect, useDispatch } from "react-redux";
+
+import { fetchImages } from "@/entities/thunks/fetchImages";
+import { ImagesSelectors } from "@/entities/imageSelectors";
+import { AppDispatch, RootState } from "@/store";
+import InfiniteLoaderGrid from "@/ui/components/grid/InfiniteLoaderGrid";
+import GridItem from "@/ui/components/grid/gridItem/Griditem";
 
 interface GridProps {
     ids: EntityId[];

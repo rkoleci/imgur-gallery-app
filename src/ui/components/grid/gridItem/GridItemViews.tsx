@@ -1,8 +1,9 @@
-import { EntityId } from "@reduxjs/toolkit";
-import { ImagesSelectors } from "../../entities/imageSelectors";
-import { Image } from "../../entities/types";
 import { connect } from "react-redux";
-import { RootState } from "../../store";
+import { EntityId } from "@reduxjs/toolkit"
+
+import { Image } from "@/entities/types";
+import { ImagesSelectors } from "@/entities/imageSelectors";
+import { RootState } from "@/store"
 
 interface GridItemViewsOwnProps {
     id: EntityId;

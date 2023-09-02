@@ -1,6 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { RootState } from "../../store";
-import { FilterStateKey } from "../types";
+
+import { RootState } from "@/store";
+import { FilterStateKey } from "@/ui/filters/types";
 
 export namespace FilterSelectors {
   

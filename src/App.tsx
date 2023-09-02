@@ -1,4 +1,4 @@
-import HomepageLayout from './ui/Layout/HomepageLayout'
+import HomepageLayout from './ui/pages/home/HomepageLayout'
 
 function App() {
 

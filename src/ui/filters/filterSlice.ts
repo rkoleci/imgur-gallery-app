@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { FilterSection, FilterSort, FilterState, FilterWindow } from '../types'
 import { isNil } from 'lodash'
-import { ImagesApiClient } from '../../api/ImagesApiClient'
-import { AppDispatch, RootState } from '../../store'
-import { FilterSelectors } from './filterSelectors'
-import { fetchImages } from '../../entities/thunks/fetchImages'
+
+import { FilterSection, FilterSort, FilterState, FilterWindow } from '@/ui/filters/types'
+import { FilterSelectors } from '@/ui/filters/filterSelectors'
+import { fetchImages } from '@/entities/thunks/fetchImages'
+import { ImagesApiClient } from '@/api/ImagesApiClient'
+import { AppDispatch, RootState } from '@/store'
  
 export const selectFiltersAndFetch = ({ sort, viral, search, window, section, page = 1 }: ImagesApiClient.ImagesRequest) => (dispatch: AppDispatch) => {
     if (!isNil(sort)) {
