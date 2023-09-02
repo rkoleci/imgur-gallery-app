@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import debounce from 'lodash/debounce';
 
 interface InputProps {
@@ -19,7 +19,7 @@ const Input = ({ onChange, placeholder, type = 'text' }: InputProps) => {
     };
   }, [value, onChange]);
 
-  const handleChange = (e) => {
+  const handleChange = (e: { target: { value: any; }; }) => {
     const { value: inputValue } = e.target;
     setValue(inputValue);
   };

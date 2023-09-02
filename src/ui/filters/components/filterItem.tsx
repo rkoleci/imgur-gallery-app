@@ -15,16 +15,16 @@ const sections = Object.keys(FilterSection) as Array<keyof typeof FilterSection>
 const FilterItem = ({ category }: FilterItemProps) => {
     const dispatch = useDispatch<AppDispatch>() 
 
-    const onViral = (event: Event) => {
-        const viral = (event.target as HTMLInputElement).value;
+    const onViral = (e: { target: { value: any; }; }) => {
+        const viral = (e.target as HTMLInputElement).value;
 
         dispatch(selectFiltersAndFetch({
             viral: viral === 'on' ? true: false
         }))
     }
 
-    const onSort = (event: Event) => {
-        const sort = (event.target as HTMLInputElement).value;
+    const onSort = (e: { target: { value: any; }; }) => {
+        const sort = (e.target as HTMLInputElement).value;
 
         dispatch(selectFiltersAndFetch({
             sort: sort as FilterSort

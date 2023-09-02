@@ -10,7 +10,7 @@ interface InfiniteLoaderGridProps {
 
 const InfiniteLoaderGrid = ({ items, onLoadMore, totalPages, renderItem }: InfiniteLoaderGridProps) => {
   const [pageNum, setPageNum] = useState(1);
-  const [lastElement, setLastElement] = useState(null);
+  const [lastElement, setLastElement] = useState<HTMLDivElement | null>();
 
   const observer = useRef(
     new IntersectionObserver((entries) => {
@@ -46,7 +46,7 @@ const InfiniteLoaderGrid = ({ items, onLoadMore, totalPages, renderItem }: Infin
     <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 w-full h-full">
       {items?.map((id, i) => {
           return (
-            <div key={`${id}`} ref={i === items.length - 1 && pageNum <= totalPages ? setLastElement : null}  >
+            <div key={`${id}`} ref={(i === items.length - 1 && pageNum <= totalPages ? setLastElement : null)}  >
               {renderItem(id, i)}
             </div>
           )

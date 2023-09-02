@@ -8,7 +8,7 @@ export namespace FilterSelectors {
     export const selectFilters = (state: RootState) => state.filters;
 
     export const selectFilterByType = createSelector(
-        [selectFilters, (state, filterType) => filterType],
+        [selectFilters, (_, filterType) => filterType],
         (items, filterType) => {
             return items && items[filterType as FilterStateKey] 
         }

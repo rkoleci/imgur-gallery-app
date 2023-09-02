@@ -1,5 +1,6 @@
 import { FilterSection, FilterSort, FilterWindow } from "@/ui/filters/types";
 import { APIResponse, parseAPIResponse, tryFetch } from "@/api/utils";
+import { Image } from "@/entities/types";
 
 export namespace ImagesApiClient {
   
@@ -13,12 +14,13 @@ export namespace ImagesApiClient {
     }
     
     export interface ImagesResponse {
-        data: any; 
-        time: string;
+        data: Image[]; 
     } 
   
     export const getImages = async (data: ImagesRequest): Promise<APIResponse<ImagesResponse>>  => { // ApiResponse
         const url = `https://jsonplaceholder.typicode.com/todos/1`
+
+        console.log(data)
 
         const response = await tryFetch(url, {
           method: "GET",

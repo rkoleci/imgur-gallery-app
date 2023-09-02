@@ -33,13 +33,13 @@ export function notifyError(error: string | {}) {
                 console.error(error, requestInfo, requestInit);
                 notifyError(error);
             }
-            return new Promise(null);
+            return new Promise(null as any);
         })
   }
 
  
 export async function parseAPIResponse<T> (response: Response | null): Promise<any> {
-  let apiResponse: APIResponse<T> = { data: undefined, errors: null };
+  let apiResponse: APIResponse<T> = { data: undefined, errors: undefined };
 
   if (isNil(response)) { 
     apiResponse.errors = [{
