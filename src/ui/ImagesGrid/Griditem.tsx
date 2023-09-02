@@ -17,7 +17,7 @@ const GridItem = ({ title, link }: GridItemProps) => {
    
     return (
       <div>
-          <p>{title}</p>
+          <p className="text-2xl font-grotesque font-bold">{title}</p>
           <img src={link} width={100} height={100} />
       </div>
     )
