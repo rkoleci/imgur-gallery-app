@@ -4,6 +4,9 @@ export interface Image {
     description: string | null;
     datetime: string;
     type: string;
+    images: Array<{
+        link: string;
+    }>;
     animated: boolean;
     width: number;
     height: number;

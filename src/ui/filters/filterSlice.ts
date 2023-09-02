@@ -8,12 +8,12 @@ import { fetchImages } from '@/entities/thunks/fetchImages'
 import { ImagesApiClient } from '@/api/ImagesApiClient'
 import { AppDispatch, RootState } from '@/store'
  
-export const selectFiltersAndFetch = ({ sort, viral, search, window, section, page = 1 }: ImagesApiClient.ImagesRequest) => (dispatch: AppDispatch) => {
+export const selectFiltersAndFetch = ({ sort, showViral, search, window, section, page = 1 }: ImagesApiClient.ImagesRequest) => (dispatch: AppDispatch) => {
     if (!isNil(sort)) {
       dispatch(setSort(sort))
     }
-    if (!isNil(viral)) {
-      dispatch(setViral(viral))
+    if (!isNil(showViral)) {
+      dispatch(setViral(showViral))
     } 
     if (!isNil(search)) {
       dispatch(setSearch(search))
@@ -34,8 +34,9 @@ export const selectFiltersAndFetch = ({ sort, viral, search, window, section, pa
   }
 
 const initialState: FilterState = {
-    sort: FilterSort.ASC,
-    viral: false,
+    section: FilterSection.Hot,
+    sort: FilterSort.Top,
+    showViral: false,
     search: null,
 }
 
@@ -47,7 +48,7 @@ const filterSlice = createSlice({
       state.sort = action.payload
     },
     setViral(state, action: PayloadAction<boolean>) {
-        state.viral = action.payload
+        state.showViral = action.payload
     },
     setSearch(state, action: PayloadAction<string | null>) {
       state.search = action.payload

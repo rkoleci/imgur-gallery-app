@@ -2,8 +2,8 @@ import { useMemo } from "react";
 import { EntityId } from "@reduxjs/toolkit";
 import { connect, useDispatch } from "react-redux";
 
-import { fetchImages } from "@/entities/thunks/fetchImages";
 import { ImagesSelectors } from "@/entities/imageSelectors";
+import { fetchImagesWithFilters } from "@/ui/filters/filterSlice";
 import { AppDispatch, RootState } from "@/store";
 import InfiniteLoaderGrid from "@/ui/components/grid/InfiniteLoaderGrid";
 import GridItem from "@/ui/components/grid/gridItem/Griditem";
@@ -16,7 +16,7 @@ const Grid = ({ ids }: GridProps) => {
   const dispatch = useDispatch<AppDispatch>()
 
   const onLoadMore = (page: number) => {
-    dispatch(fetchImages({ page }))
+    dispatch(fetchImagesWithFilters({ page }))
   };   
 
   const renderItem = useMemo(() => (item: EntityId) => {

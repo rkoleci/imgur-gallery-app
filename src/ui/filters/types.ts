@@ -1,16 +1,17 @@
 export interface FilterState {
     sort: FilterSort,
-    viral: boolean;
+    showViral: boolean;
     search: string | null;
     window?: FilterWindow;
-    section?: FilterSection;
+    section: FilterSection;
 }
 
 export type FilterStateKey =  keyof FilterState
 
 export enum FilterSort {
-    ASC = 'ASC',
-    DESC = 'DESC'
+    Viral = 'viral',
+    Top = 'top',
+    Time = 'time'
 }
 
 export enum FilterWindow {

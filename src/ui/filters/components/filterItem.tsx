@@ -19,7 +19,7 @@ const FilterItem = ({ category }: FilterItemProps) => {
         const viral = (e.target as HTMLInputElement).value;
 
         dispatch(selectFiltersAndFetch({
-            viral: viral === 'on' ? true: false
+            showViral: viral === 'on' ? true: false
         }))
     }
 

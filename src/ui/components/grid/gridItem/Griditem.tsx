@@ -46,7 +46,7 @@ const mapStateToProps = (state: RootState, { id }: GridItemOwnProps) => {
 
     return {
         title: item?.title || '',
-        link: item?.link || 'https://i.imgur.com/Qu7EHDV.jpeg',
+        link: item?.images && item?.images[0]?.link || 'https://i.imgur.com/Qu7EHDV.jpeg',
     }
 }
 
