@@ -28,7 +28,7 @@ const mapStateToProps = (state: RootState, { id }: GridItemOwnProps) => {
 
     return {
         title: item?.title || '',
-        link: item?.link
+        link: item?.link || ''
     }
 }
 

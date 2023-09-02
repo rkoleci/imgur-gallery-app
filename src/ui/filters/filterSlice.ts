@@ -15,13 +15,13 @@ export const selectFiltersAndFetch = ({ sort, viral, page = 1 }: ImagesApiClient
       dispatch(setViral(viral))
     } 
   
-    dispatch(fetchImagesWithFilters({ page }))
+    //dispatch(fetchImagesWithFilters({ page }))
   }
   
   export const fetchImagesWithFilters = ({ page }: { page: number }) => (dispatch: AppDispatch, getState: () => RootState) => {
     const filters = FilterSelectors.selectFilters(getState());
     console.log(111111, { filters })
-    dispatch(fetchImages({ page, ...filters }));
+    //dispatch(fetchImages({ page, ...filters }));
   }
 
 const initialState: FilterState = {
