@@ -7,6 +7,7 @@ import { fetchImagesWithFilters } from "@/ui/filters/filterSlice";
 import { AppDispatch, RootState } from "@/store";
 import InfiniteLoaderGrid from "@/ui/components/grid/InfiniteLoaderGrid";
 import GridItem from "@/ui/components/grid/gridItem/Griditem";
+import Skeleton from "@/ui/components/grid/Skeleton";
 
 interface GridProps {
     ids: EntityId[];
@@ -23,6 +24,11 @@ const Grid = ({ ids }: GridProps) => {
     return <GridItem id={item} />
   }, [])
 
+    
+  if (!ids || !ids.length) {
+    return <Skeleton />
+  }
+
     return (
       <InfiniteLoaderGrid items={ids} onLoadMore={onLoadMore} totalPages={10} renderItem={renderItem} />
     ) 
@@ -37,3 +43,7 @@ const mapStateToProps = (state:RootState) => {
   }
 
 export default connect(mapStateToProps)(Grid)
+
+
+
+

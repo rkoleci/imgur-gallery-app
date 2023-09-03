@@ -17,12 +17,16 @@ export namespace ImagesApiClient {
     export interface ImagesResponse {
         data: Image[]; 
     } 
-    // https://api.imgur.com/3/gallery/search/top/year/1?q=cats
-    export const getImages = async (data: ImagesRequest): Promise<APIResponse<ImagesResponse>>  => {
-        let url = `${API_BASE_URL}/gallery/search/`
-        console.log(111, 'getImagesAPi', data)
-        const {  sort, page,   window, search } = data
 
+    export const getImages = async (data: ImagesRequest): Promise<APIResponse<ImagesResponse>>  => {
+      const {  sort, page,   window, search } = data
+      
+      let url = `${API_BASE_URL}/gallery/`
+
+        if (!isNil(search)) {
+          url += `search/`
+        } 
+        
         if (!isNil(sort)) {
           url += `${sort}/`
         } 
