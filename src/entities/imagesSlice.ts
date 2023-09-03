@@ -8,8 +8,10 @@ export const imagesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => { 
     builder.addCase(fetchImages.fulfilled, (state, action) => {
-      console.log(action.payload.data)
-      imagesAdapter.setMany(state, action.payload.data )
+      if (action.payload?.data) {
+        imagesAdapter.removeAll(state)
+        imagesAdapter.setMany(state, action?.payload?.data )
+      }
     }); 
   },
   

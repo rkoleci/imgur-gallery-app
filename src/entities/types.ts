@@ -6,8 +6,9 @@ export interface Image {
     type: string;
     images: Array<{
         link: string;
+        type: 'video/mp4' | 'image/jpeg' | 'image/png',
+        animated: boolean;
     }>;
-    animated: boolean;
     width: number;
     height: number;
     size: number;
@@ -34,4 +35,11 @@ export interface Image {
     downs: number | null;
     points: number | null;
     score: number | null;
+}
+
+
+export interface Suggestion {
+    type: string;
+    text:  string;
+    images: number;
 }

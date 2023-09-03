@@ -29,7 +29,7 @@ export function notifyError(error: string | {}) {
             return response;
         })
         .catch(error => {
-            if (!isAbortError(error)) { //do not notify an abortion error
+            if (!isAbortError(error)) {  
                 console.error(error, requestInfo, requestInit);
                 notifyError(error);
             }
@@ -39,7 +39,7 @@ export function notifyError(error: string | {}) {
 
  
 export async function parseAPIResponse<T> (response: Response | null): Promise<any> {
-  let apiResponse: APIResponse<T> = { data: undefined, errors: undefined };
+  const apiResponse: APIResponse<T> = { data: undefined, errors: undefined };
 
   if (isNil(response)) { 
     apiResponse.errors = [{

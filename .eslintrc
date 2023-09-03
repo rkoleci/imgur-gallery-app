@@ -12,6 +12,7 @@
   "rules": { 
     "@typescript-eslint/no-namespace": "off",
     "no-unsafe-optional-chaining": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "no-console": "off" // Remember, this means error!
   }
 }

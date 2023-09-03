@@ -2,8 +2,10 @@ import { FilterSection, FilterSort, FilterWindow } from "@/ui/filters/types";
 import { APIResponse, parseAPIResponse, tryFetch } from "@/api/utils";
 import { Image } from "@/entities/types";
 import { isNil } from "lodash";
+import { API_BASE_URL, ClientID } from "@/constants";
 
 export namespace ImagesApiClient {
+  
   
     export interface ImagesRequest {
       page?: number;
@@ -17,30 +19,40 @@ export namespace ImagesApiClient {
     export interface ImagesResponse {
         data: Image[]; 
     } 
-  
-    export const getImages = async (data: ImagesRequest): Promise<APIResponse<ImagesResponse>>  => { // ApiResponse
-        let url = `https://api.imgur.com/3/gallery/`
-        const { section, page } = data
-
+    
+    export const getImages = async (data: ImagesRequest): Promise<APIResponse<ImagesResponse>>  => {
+        let url = `${API_BASE_URL}/gallery/`
+        const { section, sort, page, showViral, window } = data
+      
         if (!isNil(section)) {
           url += `${section}/`
         }
-        
-        url += `0.json?`
 
-        if (!isNil(page)) {
-          url += `page=${page}`
+        if (!isNil(sort)) {
+          url += `${sort}/`
         }
 
-        console.log(data)
+        if (!isNil(window)) {
+          url += `window=${window}/`
+        }
+        
+        if (!isNil(page)) {
+          url += `page=${page}?`
+        }
+
+        if (!isNil(showViral)) {
+          url += `showViral=${showViral}`
+        }
+
+       
 
         const response = await tryFetch(url, {
           method: "GET",
           headers: {
-            'Authorization': 'Client-ID 431354245bb4b8a'
+            'Authorization': `Client-ID ${ClientID}`
           }
         })
-        console.log(response)
+
         return parseAPIResponse(response);
     };
   

@@ -3,11 +3,12 @@ import { ImagesApiClient  } from "@/api/ImagesApiClient";
 import { processThunkResults } from "@/entities/thunks/utils";
 
 export const fetchImages = createAsyncThunk<
-any,
-ImagesApiClient.ImagesRequest,
-  { rejectValue: any }
+  ImagesApiClient.ImagesResponse | undefined,  
+  ImagesApiClient.ImagesRequest,  
+  {
+    rejectValue: unknown;
+  }
 >("images/fetch", async (data, thunkAPI) => {
   const response = await ImagesApiClient.getImages(data);
-  return processThunkResults(thunkAPI, response?.data, response?.errors)
+  return processThunkResults(thunkAPI, response?.data, response?.errors);
 });
-

@@ -32,7 +32,7 @@ export enum FilterSection {
 
 export enum FilterTypes {
     Sort= 'sort',
-    Viral= 'viral',
+    Viral= 'showViral',
     Search= 'search',
     Window= 'window',
     Section= 'section',

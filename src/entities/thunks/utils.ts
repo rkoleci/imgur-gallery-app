@@ -1,3 +1,4 @@
+
 export interface APIError {
     errorCode?: string;
     message: string;
@@ -14,7 +15,7 @@ export interface APIError {
         const rejectedValue: ThunkErrorResponse = {
             errors
         }
-        return thunkApi.rejectWithValue(rejectedValue);
+        return thunkApi.rejectedValue(rejectedValue);
     }
   
     return data;
