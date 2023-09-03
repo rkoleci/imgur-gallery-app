@@ -5,11 +5,11 @@ This is a React.js project called Imgur Gallery App, which allows users to explo
 ## Features
 
 - **Image Grid**: View a grid of images fetched from the Imgur API.
+- **Infinite Loader/Pagination**: Scroll down to view more images.
 - **Search**: Search for specific images by entering keywords.
 - **Sorting**: Sort images based on various criteria such as "most viral," "top," "time," etc.
 - **Window Filters**: Filter images based on different time windows, like "day," "week," "month," "year," or "all."
-- **Pagination**: Navigate through multiple pages of image results.
-- **Live Demo**: You can explore the live demo [here](#insert-url-here).
+- **Live Demo**: You can explore the live demo [here](https://64f495273dd92a1f6ffcfa1f--voluble-toffee-b77233.netlify.app/).
 
 ## Installation
 
