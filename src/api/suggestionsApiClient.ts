@@ -18,7 +18,7 @@ export namespace SuggestionsApiClient {
     // !!! DUMMY REQUEST BCUZ IMGUR SUGGESTION EDPOINT THROWS CORS
     // RESPONSE IS SAME AS IMGUR - INPUTED FROM a json file
     export const getSuggestions = async (data: SuggestionsRequest): Promise<APIResponse<SuggestionsResponse>>  => {
-        let url = `https://restcountries.com/v3.1/all`
+        let url = `https://restcountries.com/v3.1/all` // fake api
         const { q } = data
 
         if (!isNil(q)) {

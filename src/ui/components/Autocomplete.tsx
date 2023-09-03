@@ -8,10 +8,9 @@ type AutocompleteProps = {
   onSelect(val: string): void;
 };
 
-const Autocomplete = ({ items, onChange, onSelect }: AutocompleteProps) => {
+const Autocomplete = ({ items, onChange }: AutocompleteProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState<string>()
   
   return (
     <div
@@ -24,7 +23,6 @@ const Autocomplete = ({ items, onChange, onSelect }: AutocompleteProps) => {
       <DebounceInput
         onChange={onChange}
         placeholder="Type something.."
-        value={selected}
       />
      {items.length > 0 && (
        <div className="dropdown-content bg-base-200 top-14 max-h-96 overflow-auto flex-col rounded-md">
@@ -38,8 +36,7 @@ const Autocomplete = ({ items, onChange, onSelect }: AutocompleteProps) => {
                key={index}
                tabIndex={index + 1}
                onClick={() => {
-                 setSelected(item)
-                 onSelect(item);
+                 onChange(item);
                  setOpen(false);
                }}
                className="border-b border-b-base-content/10 w-full"

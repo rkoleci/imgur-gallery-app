@@ -1,9 +1,9 @@
 import Autocomplete from "./Autocomplete";
 import { connect, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "@/store";
-import { fetchSuggestions } from "../suggestions/thunks/fetchSuggestions";
 import { SuggestionsSelectors } from "../suggestions/suggestionsSelectors";
 import { Suggestion } from "@/entities/types";
+import {  selectFiltersAndFetch } from "../filters/filterSlice";
   
 interface SuggestionAutocompleteProps {
   items: Suggestion[];
@@ -13,12 +13,12 @@ interface SuggestionAutocompleteProps {
 const SuggestionAutocomplete = ({ items, onSearch }: SuggestionAutocompleteProps) => {
   const dispatch = useDispatch<AppDispatch>()
 
-  const onChange = (q: string) => {
-   dispatch(fetchSuggestions({ q }))
+  const onChange = (search: string) => { 
+    onSearch(search)
   }
 
-  const  onSelect = (item: string) => {
-    onSearch(item)
+  const  onSelect = (search: string) => {
+    dispatch(selectFiltersAndFetch({ search }))
   }
    
   return <Autocomplete items={items.map(i => i.text)} onChange={onChange} onSelect={onSelect} />;
