@@ -10,7 +10,6 @@ export const suggestionsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => { 
     builder.addCase(fetchSuggestions.fulfilled, (state, action) => { 
-      // INSTEAD - WILL READ FROM A JSON FILE - THIS ENDPOINT THROWS CORS EVEN ON HTTPS
       suggestionsAdapter.removeAll(state)
 
       if (action.meta.arg.q) {

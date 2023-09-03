@@ -1,7 +1,7 @@
 import {  FilterSort, FilterWindow } from "@/ui/filters/types";
 import { APIResponse, parseAPIResponse, tryFetch } from "@/api/utils";
 import { Image } from "@/entities/types";
-import { isNil } from "lodash";
+import { isEmpty, isNil } from "lodash";
 import { API_BASE_URL, ClientID } from "@/constants";
 
 export namespace ImagesApiClient {
@@ -23,10 +23,10 @@ export namespace ImagesApiClient {
       
       let url = `${API_BASE_URL}/gallery/`
 
-        if (!isNil(search)) {
+        if (!isEmpty(search)) {
           url += `search/`
         } 
-        
+
         if (!isNil(sort)) {
           url += `${sort}/`
         } 
@@ -39,7 +39,7 @@ export namespace ImagesApiClient {
           url += `${page}?`
         } 
 
-        if (!isNil(search)) {
+        if (!isEmpty(search)) {
           url += `q=${search}`
         } 
 

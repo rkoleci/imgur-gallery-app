@@ -17,6 +17,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-error-overlay": "^6.0.11",
+    "react-lazy-load-image-component": "^1.6.0",
     "react-redux": "^8.1.2",
     "react-window": "^1.8.9",
     "react-window-infinite-loader": "^1.0.9"
@@ -26,6 +27,7 @@
     "@types/node": "^20.5.7",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
+    "@types/react-lazy-load-image-component": "^1.5.3",
     "@types/react-virtualized": "^9.21.22",
     "@types/react-window": "^1.8.5",
     "@types/react-window-infinite-loader": "^1.0.6",

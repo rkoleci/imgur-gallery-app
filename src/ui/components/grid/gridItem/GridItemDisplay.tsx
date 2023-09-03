@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { EntityId } from "@reduxjs/toolkit"
 import { connect } from "react-redux";
+import { LazyLoadComponent, LazyLoadImage } from 'react-lazy-load-image-component';
 
 import { Image } from "@/entities/types";
 import { ImagesSelectors } from "@/entities/imageSelectors";
@@ -26,7 +27,9 @@ const GridItemDisplay = ({ animated, link}: GridItemDisplayProps) => {
     if (animated) {
         return (
             <div onClick={toggleZoom}>
-                 <video src={link} autoPlay playsInline muted className={`rounded-sm min-h-[150px] sm:min-h-[180px] lg:min-h-[300px] object-contain`}  />
+                <LazyLoadComponent>
+                    <video src={link}  autoPlay playsInline muted className={`rounded-sm min-h-[150px] sm:min-h-[180px] lg:min-h-[300px] object-contain`}  />
+                </LazyLoadComponent>
                  <FullScreenView visible={zoom}  >
                     <video src={link} autoPlay playsInline muted className={`rounded-sm  object-contain  `}  />
                  </FullScreenView>
@@ -36,7 +39,10 @@ const GridItemDisplay = ({ animated, link}: GridItemDisplayProps) => {
 
     return (
         <div onClick={toggleZoom}>
-            <img src={link} className={`rounded-sm min-h-[150px] sm:min-h-[180px] lg:min-h-[300px] object-contain`}   />
+             <LazyLoadImage
+                className={`rounded-sm min-h-[150px] sm:min-h-[180px] lg:min-h-[300px] object-contain`} 
+                src={link}
+            />
             <FullScreenView visible={zoom}  >
                 <img  src={link} className={`rounded-sm min-h-[250px] sm:min-h-[350px] lg:min-h-[400px]  object-contain `}   />
             </FullScreenView>
